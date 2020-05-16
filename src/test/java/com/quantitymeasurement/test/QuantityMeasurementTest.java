@@ -25,4 +25,11 @@ public class QuantityMeasurementTest {
         boolean results = quantityMeasurement.equals(quantityMeasurement1);
         Assert.assertFalse(results);
     }
+
+    @Test
+    public void givenQuantityMeasurementObjectAsReference_WhenSame_ShouldReturnTrue(){
+        QuantityMeasurement quantityMeasurement1 = quantityMeasurement;
+        boolean results = quantityMeasurement.equals(quantityMeasurement1);
+        Assert.assertTrue(results);
+    }
 }
