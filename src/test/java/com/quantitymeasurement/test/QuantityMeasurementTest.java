@@ -38,4 +38,11 @@ public class QuantityMeasurementTest {
         boolean results = quantityMeasurement.equals(new QuantityMeasurementTest());
         Assert.assertFalse(results);
     }
+
+    @Test
+    public void givenFeetAndFeet_When0and1_ShouldReturnFalse() {
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1);
+        boolean equals = quantityMeasurement.equals(quantityMeasurement1);
+        Assert.assertFalse(equals);
+    }
 }
