@@ -1,6 +1,7 @@
 package com.quantitymeasurement.test;
 
 import com.quantitymeasurement.QuantityMeasurement;
+import com.quantitymeasurement.enums.Units;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,12 +10,12 @@ public class QuantityMeasurementTest {
     QuantityMeasurement quantityMeasurement;
     @Before
     public void setUp() throws Exception {
-        quantityMeasurement = new QuantityMeasurement(0);
+        quantityMeasurement = new QuantityMeasurement(Units.Feet, 0);
     }
 
     @Test
     public void givenFeetAndFeet_When0and0_ShouldReturnEqual() {
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(0);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.Feet, 0);
         boolean equals = quantityMeasurement.equals(quantityMeasurement1);
         Assert.assertTrue(equals);
     }
@@ -41,7 +42,7 @@ public class QuantityMeasurementTest {
 
     @Test
     public void givenFeetAndFeet_When0and1_ShouldReturnFalse() {
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.Feet, 1);
         boolean equals = quantityMeasurement.equals(quantityMeasurement1);
         Assert.assertFalse(equals);
     }
