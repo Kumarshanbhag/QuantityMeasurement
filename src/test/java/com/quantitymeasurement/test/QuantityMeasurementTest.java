@@ -32,4 +32,10 @@ public class QuantityMeasurementTest {
         boolean results = quantityMeasurement.equals(quantityMeasurement1);
         Assert.assertTrue(results);
     }
+
+    @Test
+    public void givenQuantityMeasurementObject_WhenWrongClassType_ShouldReturnFalse(){
+        boolean results = quantityMeasurement.equals(new QuantityMeasurementTest());
+        Assert.assertFalse(results);
+    }
 }
