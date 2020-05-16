@@ -13,9 +13,16 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void given0FeetAnd0Feet_ShouldReturnEqual() {
+    public void givenFeetAndFeet_When0and0_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(0);
         boolean equals = quantityMeasurement.equals(quantityMeasurement1);
         Assert.assertTrue(equals);
+    }
+
+    @Test
+    public void givenFeetAndFeet_When0AndNull_ShouldReturnFalse(){
+        QuantityMeasurement quantityMeasurement1 = null;
+        boolean results = quantityMeasurement.equals(quantityMeasurement1);
+        Assert.assertFalse(results);
     }
 }
