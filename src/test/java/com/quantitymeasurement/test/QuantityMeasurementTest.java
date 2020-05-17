@@ -155,4 +155,12 @@ public class QuantityMeasurementTest {
         quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
+
+    @Test
+    public void givenYardAndFeet_When1and3_ShouldReturnNotEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.YARD, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 3);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
 }
