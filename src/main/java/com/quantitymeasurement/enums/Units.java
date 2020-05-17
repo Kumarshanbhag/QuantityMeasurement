@@ -8,5 +8,9 @@ public enum Units {
     Units(double value) {
         this.conversionValue = value;
     }
+
+    public double getConvertedValue(double convertValue) {
+        return this.conversionValue * convertValue;
+    }
 }
 

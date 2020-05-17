@@ -75,4 +75,12 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
+
+    @Test
+    public void givenFeetAndInch_When0and0_ShouldReturnNotEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 0);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 0);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
 }
