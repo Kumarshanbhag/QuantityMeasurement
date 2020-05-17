@@ -54,4 +54,11 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement1 = null;
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
+
+    @Test
+    public void givenQuantityMeasurementObjectAsReference_WhenSameForInch_ShouldReturnTrue(){
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 0);
+        QuantityMeasurement quantityMeasurement1 = quantityMeasurement;
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
 }
