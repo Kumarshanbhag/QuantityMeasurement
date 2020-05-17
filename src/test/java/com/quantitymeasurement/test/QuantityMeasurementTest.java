@@ -7,43 +7,45 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class QuantityMeasurementTest {
-    QuantityMeasurement quantityMeasurement;
-    @Before
-    public void setUp() throws Exception {
-        quantityMeasurement = new QuantityMeasurement(Units.Feet, 0);
-    }
-
     @Test
     public void givenFeetAndFeet_When0and0_ShouldReturnEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.Feet, 0);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.Feet, 0);
-        boolean equals = quantityMeasurement.equals(quantityMeasurement1);
-        Assert.assertTrue(equals);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
     @Test
-    public void givenFeetAndFeet_When0AndNull_ShouldReturnFalse(){
+    public void givenFeetAndFeet_When0AndNull_ShouldReturnNotEqual(){
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.Feet, 0);
         QuantityMeasurement quantityMeasurement1 = null;
-        boolean results = quantityMeasurement.equals(quantityMeasurement1);
-        Assert.assertFalse(results);
+        Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 
     @Test
     public void givenQuantityMeasurementObjectAsReference_WhenSame_ShouldReturnTrue(){
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.Feet, 0);
         QuantityMeasurement quantityMeasurement1 = quantityMeasurement;
-        boolean results = quantityMeasurement.equals(quantityMeasurement1);
-        Assert.assertTrue(results);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
     @Test
     public void givenQuantityMeasurementObject_WhenWrongClassType_ShouldReturnFalse(){
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.Feet, 0);
         boolean results = quantityMeasurement.equals(new QuantityMeasurementTest());
         Assert.assertFalse(results);
     }
 
     @Test
-    public void givenFeetAndFeet_When0and1_ShouldReturnFalse() {
+    public void givenFeetAndFeet_When0and1_ShouldReturnNotEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.Feet, 0);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.Feet, 1);
-        boolean equals = quantityMeasurement.equals(quantityMeasurement1);
-        Assert.assertFalse(equals);
+        Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
+    }
+
+    @Test
+    public void givenInchAndInch_When0and0_ShouldReturnEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 0);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 0);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 }

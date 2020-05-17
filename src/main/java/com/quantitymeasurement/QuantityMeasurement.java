@@ -2,11 +2,9 @@ package com.quantitymeasurement;
 
 import com.quantitymeasurement.enums.Units;
 
-import java.util.Objects;
-
 public class QuantityMeasurement {
-    private final double value;
-    private final Units unit;
+    private double value;
+    private Units unit;
 
     public QuantityMeasurement(Units unit, double value) {
         this.unit = unit;
