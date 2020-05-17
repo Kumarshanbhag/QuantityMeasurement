@@ -163,4 +163,12 @@ public class QuantityMeasurementTest {
         quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
+
+    @Test
+    public void givenInchAndCentimeter_When2and5_ShouldReturnNotEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 2);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.CM, 5);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
 }
