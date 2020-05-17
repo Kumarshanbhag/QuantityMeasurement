@@ -21,7 +21,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenQuantityMeasurementObjectAsReference_WhenSame_ShouldReturnTrue(){
+    public void givenQuantityMeasurementObjectAsReference_WhenSame_ShouldReturnEqual(){
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.Feet, 0);
         QuantityMeasurement quantityMeasurement1 = quantityMeasurement;
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
@@ -56,9 +56,16 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenQuantityMeasurementObjectAsReference_WhenSameForInch_ShouldReturnTrue(){
+    public void givenQuantityMeasurementObjectAsReference_WhenSameForInch_ShouldReturnEqual(){
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 0);
         QuantityMeasurement quantityMeasurement1 = quantityMeasurement;
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
+
+    @Test
+    public void givenQuantityMeasurementObject_WhenWrongClassTypeForInch_ShouldReturnFalse(){
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.Feet, 0);
+        boolean results = quantityMeasurement.equals(new QuantityMeasurementTest());
+        Assert.assertFalse(results);
     }
 }
