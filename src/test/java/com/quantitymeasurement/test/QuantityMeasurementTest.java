@@ -171,4 +171,61 @@ public class QuantityMeasurementTest {
         quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
+
+    @Test
+    public void given2InchAnd2Inch_WhenAdded_ShouldReturn4Inch() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 2);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 2);
+        quantityMeasurement.convert(quantityMeasurement1);
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
+        Assert.assertEquals(4, totalValue, 0.0 );
+    }
+
+    @Test
+    public void given1FeetAnd2Inch_WhenAdded_ShouldReturn14Inch() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 2);
+        quantityMeasurement.convert(quantityMeasurement1);
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
+        Assert.assertEquals(14, totalValue, 0.0 );
+    }
+
+    @Test
+    public void given1FeetAnd1Feet_WhenAdded_ShouldReturn24Inch() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1);
+        quantityMeasurement.convert(quantityMeasurement1);
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
+        Assert.assertEquals(24, totalValue, 0.0 );
+    }
+
+    @Test
+    public void given2InchAnd2Point5Centimeter_WhenAdded_ShouldReturn3Inch() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 2);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.CM, 2.5);
+        quantityMeasurement.convert(quantityMeasurement1);
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
+        Assert.assertEquals(3, totalValue, 0.0 );
+    }
+
+    @Test
+    public void given2FeetAnd2InchAnd2Yard_WhenAdded_ShouldReturn98Inch() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 2);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 2);
+        QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(Units.YARD, 2);
+        quantityMeasurement.convert(quantityMeasurement1, quantityMeasurement2);
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1, quantityMeasurement2);
+        Assert.assertEquals(98, totalValue, 0.0 );
+    }
+
+    @Test
+    public void given2FeetAnd2InchAnd2YardAnd5Centimeter_WhenAdded_ShouldReturn100Inch() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 2);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 2);
+        QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(Units.YARD, 2);
+        QuantityMeasurement quantityMeasurement3 = new QuantityMeasurement(Units.CM, 5);
+        quantityMeasurement.convert(quantityMeasurement1, quantityMeasurement2, quantityMeasurement3);
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1, quantityMeasurement2,quantityMeasurement3);
+        Assert.assertEquals(100, totalValue, 0.0 );
+    }
 }

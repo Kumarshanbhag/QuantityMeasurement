@@ -11,9 +11,11 @@ public class QuantityMeasurement {
         this.value = value;
     }
 
-    public void convert(QuantityMeasurement that) {
+    public void convert(QuantityMeasurement... quantities) {
         this.value = this.unit.getConvertedValue(this.value);
-        that.value = that.unit.getConvertedValue(that.value);
+        for(QuantityMeasurement quantity : quantities) {
+            quantity.value = quantity.unit.getConvertedValue(quantity.value);
+        }
     }
 
     @Override
@@ -22,5 +24,13 @@ public class QuantityMeasurement {
         if (o == null || getClass() != o.getClass()) return false;
         QuantityMeasurement that = (QuantityMeasurement) o;
         return Double.compare(that.value, value) == 0;
+    }
+
+    public double addUnits(QuantityMeasurement... quantities) {
+        double totalValue = this.value;
+        for(QuantityMeasurement quantity : quantities) {
+            totalValue += quantity.value;
+        }
+        return totalValue;
     }
 }
