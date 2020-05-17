@@ -131,4 +131,12 @@ public class QuantityMeasurementTest {
         quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
+
+    @Test
+    public void givenInchAndYard_When1and1_ShouldReturnNotEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.YARD, 1);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
+    }
 }
