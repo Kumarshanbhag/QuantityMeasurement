@@ -3,7 +3,6 @@ package com.quantitymeasurement.test;
 import com.quantitymeasurement.QuantityMeasurement;
 import com.quantitymeasurement.enums.Units;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 public class QuantityMeasurementTest {
@@ -47,5 +46,12 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 0);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 0);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
+
+    @Test
+    public void givenInchAndInch_When0AndNull_ShouldReturnNotEqual(){
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 0);
+        QuantityMeasurement quantityMeasurement1 = null;
+        Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 }
