@@ -345,4 +345,12 @@ public class QuantityMeasurementTest {
             Assert.assertEquals(QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH, e.type);
         }
     }
+
+    @Test
+    public void given1TonneAnd1000Gram_WhenAdded_ShouldReturn1001Kilograms() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.TONNE, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.GRAMS, 1000);
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
+        Assert.assertEquals(1001, totalValue, 0.0);
+    }
 }
