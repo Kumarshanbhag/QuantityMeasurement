@@ -334,4 +334,15 @@ public class QuantityMeasurementTest {
         quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
+
+    @Test
+    public void givenGramAndInch_When1And1_ShouldReturnException() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GRAMS, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 1);
+        try {
+            quantityMeasurement.convert(quantityMeasurement1);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH, e.type);
+        }
+    }
 }
