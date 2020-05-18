@@ -2,10 +2,12 @@ package com.quantitymeasurement.test;
 
 import com.quantitymeasurement.QuantityMeasurement;
 import com.quantitymeasurement.enums.Units;
+import com.quantitymeasurement.exception.QuantityMeasurementException;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class QuantityMeasurementTest {
+    //UC1
     @Test
     public void givenFeetAndFeet_When0and0_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 0);
@@ -116,6 +118,7 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
+    //UC2
     @Test
     public void givenFeetAndYard_When3and1_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 3);
@@ -164,6 +167,7 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
+    //UC3
     @Test
     public void givenInchAndCentimeter_When2and5_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 2);
@@ -172,6 +176,7 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
+    //UC4
     @Test
     public void given2InchAnd2Inch_WhenAdded_ShouldReturn4Inch() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 2);
@@ -227,5 +232,14 @@ public class QuantityMeasurementTest {
         quantityMeasurement.convert(quantityMeasurement1, quantityMeasurement2, quantityMeasurement3);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1, quantityMeasurement2,quantityMeasurement3);
         Assert.assertEquals(100, totalValue, 0.0 );
+    }
+
+    //UC5
+    @Test
+    public void givenGallonAndLitre_When1And3Point78_ShouldReturnEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GALLON, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.LITRE, 3.78);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 }

@@ -1,6 +1,7 @@
 package com.quantitymeasurement;
 
 import com.quantitymeasurement.enums.Units;
+import com.quantitymeasurement.exception.QuantityMeasurementException;
 
 public class QuantityMeasurement {
     private double value;
@@ -14,8 +15,20 @@ public class QuantityMeasurement {
     public void convert(QuantityMeasurement... quantities) {
         this.value = this.unit.getConvertedValue(this.value);
         for(QuantityMeasurement quantity : quantities) {
+            if(this.unit.mainunit != quantity.unit.mainunit)
+                throw new QuantityMeasurementException("MainUnits Are Different", QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH);
             quantity.value = quantity.unit.getConvertedValue(quantity.value);
         }
+    }
+
+    public double addUnits(QuantityMeasurement... quantities) {
+        double totalValue = this.value;
+        for(QuantityMeasurement quantity : quantities) {
+            if(this.unit.mainunit != quantity.unit.mainunit)
+                throw new QuantityMeasurementException("MainUnits Are Different", QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH);
+            totalValue += quantity.value;
+        }
+        return totalValue;
     }
 
     @Override
@@ -24,13 +37,5 @@ public class QuantityMeasurement {
         if (o == null || getClass() != o.getClass()) return false;
         QuantityMeasurement that = (QuantityMeasurement) o;
         return Double.compare(that.value, value) == 0;
-    }
-
-    public double addUnits(QuantityMeasurement... quantities) {
-        double totalValue = this.value;
-        for(QuantityMeasurement quantity : quantities) {
-            totalValue += quantity.value;
-        }
-        return totalValue;
     }
 }

@@ -1,11 +1,14 @@
 package com.quantitymeasurement.enums;
 
 public enum Units {
-    FEET(12.0), INCH(1.0), YARD(36.0), CM(0.4);
+    FEET(MainUnits.LENGTH, 12.0), INCH(MainUnits.LENGTH, 1.0), YARD(MainUnits.LENGTH, 36.0), CM(MainUnits.LENGTH, 0.4),
+    GALLON(MainUnits.VOLUME,3.78), LITRE(MainUnits.VOLUME, 1);
 
+    public MainUnits mainunit;
     public double conversionValue;
 
-    Units(double value) {
+    Units(MainUnits mainunit, double value) {
+        this.mainunit = mainunit;
         this.conversionValue = value;
     }
 
