@@ -328,9 +328,9 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenKilogramAndTonne_When1And1_ShouldReturnNotEqual() {
+    public void givenKilogramAndGrams_When1And1_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.KG, 1);
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.TONNE, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.GRAMS, 1);
         quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
