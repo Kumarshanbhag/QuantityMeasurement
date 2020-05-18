@@ -364,4 +364,13 @@ public class QuantityMeasurementTest {
             Assert.assertEquals(QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH, e.type);
         }
     }
+
+    //UC8(Convert Fahrenheit To Celsius)
+    @Test
+    public void givenFahrenheitAndCelsius_When212And100_ShouldReturnEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FAHRENHEIT, 212);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.CELSIUS, 100);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
 }
