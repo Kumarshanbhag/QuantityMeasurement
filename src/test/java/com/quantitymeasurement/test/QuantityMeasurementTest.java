@@ -269,4 +269,44 @@ public class QuantityMeasurementTest {
             Assert.assertEquals(QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH, e.type);
         }
     }
+
+    //UC7(Add Volume Units)
+    @Test
+    public void given1GallonAnd3Point78Litres_WhenAdded_ShouldReturn7Point56Litre() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GALLON, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.LITRE, 3.78);
+        quantityMeasurement.convert(quantityMeasurement1);
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
+        Assert.assertEquals(7.56, totalValue, 0.0);
+    }
+
+    @Test
+    public void given1LitreAnd1000Millilitre_WhenAdded_ShouldReturn2Litre() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.LITRE, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.ML, 1000);
+        quantityMeasurement.convert(quantityMeasurement1);
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
+        Assert.assertEquals(2, totalValue, 0.0);
+    }
+
+    @Test
+    public void given1LitreAnd1000MillilitreAnd1Point5Gallon_WhenAdded_ShouldReturn3Litre() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.LITRE, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.ML, 1000);
+        QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(Units.GALLON, 1.5);
+        quantityMeasurement.convert(quantityMeasurement1, quantityMeasurement2);
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1, quantityMeasurement2);
+        Assert.assertEquals(7.67, totalValue, 0.0);
+    }
+
+    @Test
+    public void given1LitreAnd1Feet_WhenAdded_ShouldReturnException() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.LITRE, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1);
+        try {
+            quantityMeasurement.addUnits(quantityMeasurement1);
+        } catch(QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH, e.type);
+        }
+    }
 }
