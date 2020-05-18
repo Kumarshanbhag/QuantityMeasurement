@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class QuantityMeasurementTest {
-    //UC1
+    //UC1(Equality(Null,Reference,Type,Value) Check For Feet, Inch And Convert To Inch)
     @Test
     public void givenFeetAndFeet_When0and0_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 0);
@@ -118,7 +118,7 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
-    //UC2
+    //UC2(Equality Check And Convert All Length Values Into Inch)
     @Test
     public void givenFeetAndYard_When3and1_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 3);
@@ -167,7 +167,7 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
-    //UC3
+    //UC3(Added CM In UNits And Convert in Inch)
     @Test
     public void givenInchAndCentimeter_When2and5_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 2);
@@ -176,7 +176,7 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
-    //UC4
+    //UC4(Addition Of Different Length Units)
     @Test
     public void given2InchAnd2Inch_WhenAdded_ShouldReturn4Inch() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 2);
@@ -234,7 +234,7 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(100, totalValue, 0.0 );
     }
 
-    //UC5
+    //UC5(Convert Volume Units)
     @Test
     public void givenGallonAndLitre_When1And3Point78_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GALLON, 1);
@@ -249,5 +249,13 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.ML, 1000);
         quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
+
+    @Test
+    public void givenLitreAndMillilitre_When1And100_ShouldReturnNotEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.LITRE, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.ML, 100);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 }
