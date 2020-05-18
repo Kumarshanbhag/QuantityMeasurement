@@ -327,5 +327,11 @@ public class QuantityMeasurementTest {
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
-
+    @Test
+    public void givenKilogramAndTonne_When1And1_ShouldReturnNotEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.KG, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.TONNE, 1);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
+    }
 }
