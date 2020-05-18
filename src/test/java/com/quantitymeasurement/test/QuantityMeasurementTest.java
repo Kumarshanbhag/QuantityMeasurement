@@ -258,4 +258,12 @@ public class QuantityMeasurementTest {
         quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
+
+    @Test
+    public void givenGallonAndLitre_When1And1_ShouldReturnNotEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GALLON, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.LITRE, 1);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
+    }
 }
