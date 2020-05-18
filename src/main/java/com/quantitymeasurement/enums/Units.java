@@ -12,7 +12,7 @@ public enum Units {
     //Units Of MainUnit Volume
     GALLON(MainUnits.VOLUME,3.78), LITRE(MainUnits.VOLUME, 1), ML(MainUnits.VOLUME, 0.001 ),
     //Units Of MainUnit Weight
-    KG(MainUnits.WEIGHT, 1), GRAMS(MainUnits.WEIGHT, 0.001);
+    KG(MainUnits.WEIGHT, 1), GRAMS(MainUnits.WEIGHT, 0.001), TONNE(MainUnits.WEIGHT, 1000 );
 
     public MainUnits mainunit;
     public double conversionValue;

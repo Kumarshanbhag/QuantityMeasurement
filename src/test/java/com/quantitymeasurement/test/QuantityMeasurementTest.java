@@ -318,4 +318,14 @@ public class QuantityMeasurementTest {
         quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
+
+    @Test
+    public void givenTonneAndKilogram_When1And1000_ShouldReturnEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.TONNE, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.KG, 1000);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
+
+
 }
