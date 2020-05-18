@@ -270,7 +270,7 @@ public class QuantityMeasurementTest {
         }
     }
 
-    //UC7(Add Volume Units)
+    //UC6(Add Volume Units)
     @Test
     public void given1GallonAnd3Point78Litres_WhenAdded_ShouldReturn7Point56Litre() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GALLON, 1);
@@ -305,8 +305,17 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1);
         try {
             quantityMeasurement.addUnits(quantityMeasurement1);
-        } catch(QuantityMeasurementException e) {
+        } catch (QuantityMeasurementException e) {
             Assert.assertEquals(QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH, e.type);
         }
+    }
+
+    //UC7(Convert And Add Weight Units)
+    @Test
+    public void givenKilogramAndGrams_When1And1000_ShouldReturnEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.KG, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.GRAMS, 1000);
+        quantityMeasurement.convert(quantityMeasurement1);
+        Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 }
