@@ -353,4 +353,15 @@ public class QuantityMeasurementTest {
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
         Assert.assertEquals(1001, totalValue, 0.0);
     }
+
+    @Test
+    public void given1TonneAnd1000Litre_WhenAdded_ShouldReturnException() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.TONNE, 1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.LITRE, 1000);
+        try {
+            quantityMeasurement.addUnits(quantityMeasurement1);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH, e.type);
+        }
+    }
 }
