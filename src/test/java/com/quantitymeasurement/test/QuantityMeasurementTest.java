@@ -16,21 +16,21 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenFeetAndFeet_When0AndNull_ShouldReturnNotEqual(){
+    public void givenFeetAndFeet_When0AndNull_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 0);
         QuantityMeasurement quantityMeasurement1 = null;
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 
     @Test
-    public void givenQuantityMeasurementObjectAsReference_WhenSame_ShouldReturnEqual(){
+    public void givenQuantityMeasurementObjectAsReference_WhenSame_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 0);
         QuantityMeasurement quantityMeasurement1 = quantityMeasurement;
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
     @Test
-    public void givenQuantityMeasurementObject_WhenWrongClassType_ShouldReturnFalse(){
+    public void givenQuantityMeasurementObject_WhenWrongClassType_ShouldReturnFalse() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 0);
         boolean results = quantityMeasurement.equals(new QuantityMeasurementTest());
         Assert.assertFalse(results);
@@ -51,21 +51,21 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenInchAndInch_When0AndNull_ShouldReturnNotEqual(){
+    public void givenInchAndInch_When0AndNull_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 0);
         QuantityMeasurement quantityMeasurement1 = null;
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 
     @Test
-    public void givenQuantityMeasurementObjectAsReference_WhenSameForInch_ShouldReturnEqual(){
+    public void givenQuantityMeasurementObjectAsReference_WhenSameForInch_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 0);
         QuantityMeasurement quantityMeasurement1 = quantityMeasurement;
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
     @Test
-    public void givenQuantityMeasurementObject_WhenWrongClassTypeForInch_ShouldReturnFalse(){
+    public void givenQuantityMeasurementObject_WhenWrongClassTypeForInch_ShouldReturnFalse() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 0);
         boolean results = quantityMeasurement.equals(new QuantityMeasurementTest());
         Assert.assertFalse(results);
@@ -183,7 +183,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 2);
         quantityMeasurement.convert(quantityMeasurement1);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
-        Assert.assertEquals(4, totalValue, 0.0 );
+        Assert.assertEquals(4, totalValue, 0.0);
     }
 
     @Test
@@ -192,7 +192,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 2);
         quantityMeasurement.convert(quantityMeasurement1);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
-        Assert.assertEquals(14, totalValue, 0.0 );
+        Assert.assertEquals(14, totalValue, 0.0);
     }
 
     @Test
@@ -201,7 +201,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1);
         quantityMeasurement.convert(quantityMeasurement1);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
-        Assert.assertEquals(24, totalValue, 0.0 );
+        Assert.assertEquals(24, totalValue, 0.0);
     }
 
     @Test
@@ -210,7 +210,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.CM, 2.5);
         quantityMeasurement.convert(quantityMeasurement1);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
-        Assert.assertEquals(3, totalValue, 0.0 );
+        Assert.assertEquals(3, totalValue, 0.0);
     }
 
     @Test
@@ -220,7 +220,7 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(Units.YARD, 2);
         quantityMeasurement.convert(quantityMeasurement1, quantityMeasurement2);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1, quantityMeasurement2);
-        Assert.assertEquals(98, totalValue, 0.0 );
+        Assert.assertEquals(98, totalValue, 0.0);
     }
 
     @Test
@@ -230,8 +230,8 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(Units.YARD, 2);
         QuantityMeasurement quantityMeasurement3 = new QuantityMeasurement(Units.CM, 5);
         quantityMeasurement.convert(quantityMeasurement1, quantityMeasurement2, quantityMeasurement3);
-        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1, quantityMeasurement2,quantityMeasurement3);
-        Assert.assertEquals(100, totalValue, 0.0 );
+        double totalValue = quantityMeasurement.addUnits(quantityMeasurement1, quantityMeasurement2, quantityMeasurement3);
+        Assert.assertEquals(100, totalValue, 0.0);
     }
 
     //UC5(Convert Volume Units)
@@ -260,10 +260,13 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenGallonAndLitre_When1And1_ShouldReturnNotEqual() {
+    public void givenGallonAndFeet_When1And1_ShouldReturnException() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GALLON, 1);
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.LITRE, 1);
-        quantityMeasurement.convert(quantityMeasurement1);
-        Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
+        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1);
+        try {
+            quantityMeasurement.convert(quantityMeasurement1);
+        } catch (QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH, e.type);
+        }
     }
 }
