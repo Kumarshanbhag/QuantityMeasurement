@@ -82,7 +82,6 @@ public class QuantityMeasurementTest {
     public void givenFeetAndInch_When0and0_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 0);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 0);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -90,7 +89,6 @@ public class QuantityMeasurementTest {
     public void givenFeetAndInch_When1and1_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 1);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -98,7 +96,6 @@ public class QuantityMeasurementTest {
     public void givenInchAndFeet_When1and1_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -106,7 +103,6 @@ public class QuantityMeasurementTest {
     public void givenFeetAndInch_When1and12_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 12);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -114,8 +110,17 @@ public class QuantityMeasurementTest {
     public void givenInchAndFeet_When12and1_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 12);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
+
+    @Test
+    public void givenInchAndFeet_WhenNeagtive12and1_ShouldReturnException() {
+        try {
+            QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, -12);
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1);
+        } catch(QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.NEGATIVE_VALUE, e.type);
+        }
     }
 
     //UC2(Equality Check And Convert All Length Values Into Inch)
@@ -123,7 +128,6 @@ public class QuantityMeasurementTest {
     public void givenFeetAndYard_When3and1_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 3);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.YARD, 1);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -131,7 +135,6 @@ public class QuantityMeasurementTest {
     public void givenFeetAndYard_When1and1_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.YARD, 1);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -139,7 +142,6 @@ public class QuantityMeasurementTest {
     public void givenInchAndYard_When1and1_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.YARD, 1);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -147,7 +149,6 @@ public class QuantityMeasurementTest {
     public void givenYardAndInch_When1and36_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.YARD, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 36);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -155,7 +156,6 @@ public class QuantityMeasurementTest {
     public void givenInchAndYard_When36and1_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 36);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.YARD, 1);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -163,7 +163,6 @@ public class QuantityMeasurementTest {
     public void givenYardAndFeet_When1and3_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.YARD, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 3);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -172,8 +171,17 @@ public class QuantityMeasurementTest {
     public void givenInchAndCentimeter_When2and5_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 2);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.CM, 5);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
+    }
+
+    @Test
+    public void givenFeetAndYard_WhenNegative3and1_ShouldReturnEqual() {
+        try {
+            QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, -3);
+            QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.YARD, 1);
+        }catch(QuantityMeasurementException e) {
+            Assert.assertEquals(QuantityMeasurementException.ExceptionType.NEGATIVE_VALUE, e.type);
+        }
     }
 
     //UC4(Addition Of Different Length Units)
@@ -181,7 +189,6 @@ public class QuantityMeasurementTest {
     public void given2InchAnd2Inch_WhenAdded_ShouldReturn4Inch() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 2);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 2);
-        quantityMeasurement.convert(quantityMeasurement1);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
         Assert.assertEquals(4, totalValue, 0.0);
     }
@@ -190,7 +197,6 @@ public class QuantityMeasurementTest {
     public void given1FeetAnd2Inch_WhenAdded_ShouldReturn14Inch() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 2);
-        quantityMeasurement.convert(quantityMeasurement1);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
         Assert.assertEquals(14, totalValue, 0.0);
     }
@@ -199,7 +205,6 @@ public class QuantityMeasurementTest {
     public void given1FeetAnd1Feet_WhenAdded_ShouldReturn24Inch() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1);
-        quantityMeasurement.convert(quantityMeasurement1);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
         Assert.assertEquals(24, totalValue, 0.0);
     }
@@ -208,7 +213,6 @@ public class QuantityMeasurementTest {
     public void given2InchAnd2Point5Centimeter_WhenAdded_ShouldReturn3Inch() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.INCH, 2);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.CM, 2.5);
-        quantityMeasurement.convert(quantityMeasurement1);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
         Assert.assertEquals(3, totalValue, 0.0);
     }
@@ -218,7 +222,6 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FEET, 2);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 2);
         QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(Units.YARD, 2);
-        quantityMeasurement.convert(quantityMeasurement1, quantityMeasurement2);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1, quantityMeasurement2);
         Assert.assertEquals(98, totalValue, 0.0);
     }
@@ -229,7 +232,6 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 2);
         QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(Units.YARD, 2);
         QuantityMeasurement quantityMeasurement3 = new QuantityMeasurement(Units.CM, 5);
-        quantityMeasurement.convert(quantityMeasurement1, quantityMeasurement2, quantityMeasurement3);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1, quantityMeasurement2, quantityMeasurement3);
         Assert.assertEquals(100, totalValue, 0.0);
     }
@@ -239,7 +241,6 @@ public class QuantityMeasurementTest {
     public void givenGallonAndLitre_When1And3Point78_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GALLON, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.LITRE, 3.78);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -247,7 +248,6 @@ public class QuantityMeasurementTest {
     public void givenLitreAndMillilitre_When1And1000_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.LITRE, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.ML, 1000);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -255,19 +255,7 @@ public class QuantityMeasurementTest {
     public void givenLitreAndMillilitre_When1And100_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.LITRE, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.ML, 100);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
-    }
-
-    @Test
-    public void givenGallonAndFeet_When1And1_ShouldReturnException() {
-        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GALLON, 1);
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.FEET, 1);
-        try {
-            quantityMeasurement.convert(quantityMeasurement1);
-        } catch (QuantityMeasurementException e) {
-            Assert.assertEquals(QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH, e.type);
-        }
     }
 
     //UC6(Add Volume Units)
@@ -275,7 +263,6 @@ public class QuantityMeasurementTest {
     public void given1GallonAnd3Point78Litres_WhenAdded_ShouldReturn7Point56Litre() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GALLON, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.LITRE, 3.78);
-        quantityMeasurement.convert(quantityMeasurement1);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
         Assert.assertEquals(7.56, totalValue, 0.0);
     }
@@ -284,7 +271,6 @@ public class QuantityMeasurementTest {
     public void given1LitreAnd1000Millilitre_WhenAdded_ShouldReturn2Litre() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.LITRE, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.ML, 1000);
-        quantityMeasurement.convert(quantityMeasurement1);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1);
         Assert.assertEquals(2, totalValue, 0.0);
     }
@@ -294,7 +280,6 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.LITRE, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.ML, 1000);
         QuantityMeasurement quantityMeasurement2 = new QuantityMeasurement(Units.GALLON, 1.5);
-        quantityMeasurement.convert(quantityMeasurement1, quantityMeasurement2);
         double totalValue = quantityMeasurement.addUnits(quantityMeasurement1, quantityMeasurement2);
         Assert.assertEquals(7.67, totalValue, 0.0);
     }
@@ -315,7 +300,6 @@ public class QuantityMeasurementTest {
     public void givenKilogramAndGrams_When1And1000_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.KG, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.GRAMS, 1000);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -323,7 +307,6 @@ public class QuantityMeasurementTest {
     public void givenTonneAndKilogram_When1And1000_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.TONNE, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.KG, 1000);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 
@@ -331,19 +314,7 @@ public class QuantityMeasurementTest {
     public void givenKilogramAndGrams_When1And1_ShouldReturnNotEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.KG, 1);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.GRAMS, 1);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertNotEquals(quantityMeasurement, quantityMeasurement1);
-    }
-
-    @Test
-    public void givenGramAndInch_When1And1_ShouldReturnException() {
-        QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.GRAMS, 1);
-        QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.INCH, 1);
-        try {
-            quantityMeasurement.convert(quantityMeasurement1);
-        } catch (QuantityMeasurementException e) {
-            Assert.assertEquals(QuantityMeasurementException.ExceptionType.MAINUNIT_MISMATCH, e.type);
-        }
     }
 
     @Test
@@ -370,7 +341,6 @@ public class QuantityMeasurementTest {
     public void givenFahrenheitAndCelsius_When212And100_ShouldReturnEqual() {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement(Units.FAHRENHEIT, 212);
         QuantityMeasurement quantityMeasurement1 = new QuantityMeasurement(Units.CELSIUS, 100);
-        quantityMeasurement.convert(quantityMeasurement1);
         Assert.assertEquals(quantityMeasurement, quantityMeasurement1);
     }
 }

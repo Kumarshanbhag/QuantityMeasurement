@@ -13,7 +13,7 @@ public class QuantityMeasurementException extends RuntimeException {
     public String message;
 
     public enum ExceptionType {
-        MAINUNIT_MISMATCH
+        NEGATIVE_VALUE, MAINUNIT_MISMATCH
     }
 
     public QuantityMeasurementException(String message, ExceptionType type) {
